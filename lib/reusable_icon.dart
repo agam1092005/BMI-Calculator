@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
-
 class ReusableIcon extends StatelessWidget {
   ReusableIcon({this.icon, this.label});
 
@@ -21,7 +19,13 @@ class ReusableIcon extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(label, style: labelTextStyle),
+        Text(
+          label,
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor),
+        ),
       ],
     );
   }

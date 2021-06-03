@@ -12,7 +12,6 @@ class Settings extends StatelessWidget {
             'SETTINGS',
             style: TextStyle(
               letterSpacing: 3,
-              color: Color(0xFFc6ff00),
               fontWeight: FontWeight.bold,
               fontSize: 22,
               fontFamily: 'Bungee',
@@ -56,7 +55,7 @@ class Settings extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF2b2b2b),
+                  color: Theme.of(context).buttonColor,
                   borderRadius: BorderRadius.all(
                     Radius.circular(15),
                   ),
@@ -96,7 +95,7 @@ class Settings extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF2b2b2b),
+                  color: Theme.of(context).buttonColor,
                   borderRadius: BorderRadius.all(
                     Radius.circular(15),
                   ),

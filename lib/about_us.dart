@@ -10,7 +10,6 @@ class AboutUs extends StatelessWidget {
             'About Us',
             style: TextStyle(
               letterSpacing: 3,
-              color: Color(0xFFc6ff00),
               fontWeight: FontWeight.bold,
               fontSize: 22,
               fontFamily: 'Bungee',
@@ -24,8 +23,9 @@ class AboutUs extends StatelessWidget {
             children: [
               Center(
                 child: Padding(
-                  padding: EdgeInsets.all(40),
+                  padding: EdgeInsets.all(20),
                   child: Container(
+                    height: 200,
                     child: Image(
                       fit: BoxFit.fill,
                       image: AssetImage(
@@ -41,7 +41,7 @@ class AboutUs extends StatelessWidget {
                   'BMI CALCULATOR',
                   style: TextStyle(
                     letterSpacing: 3,
-                    color: Color(0xFFc6ff00),
+                    color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 22,
                     fontFamily: 'Bungee',
@@ -55,7 +55,35 @@ class AboutUs extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   'Calculate your Body Mass Index (BMI) from BMI Calculator. This provides users with a quick information regarding cholesterol, diabetes, heart attacks, high blood pressure, nutrition, obesity, physical activity, stroke, and tobacco use.',
+                  textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey, fontSize: 16),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Thank you for downloading our app, Kindly take 2 minute and rate our app on playstore',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              GestureDetector( 
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.star_border_sharp, size: 50,),
+                    Icon(Icons.star_border_sharp, size: 50,),
+                    Icon(Icons.star_border_sharp, size: 50,),
+                    Icon(Icons.star_border_sharp, size: 50,),
+                    Icon(Icons.star_border_sharp, size: 50,),
+                  ],
                 ),
               ),
               Flexible(

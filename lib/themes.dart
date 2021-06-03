@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 class Themes extends StatefulWidget {
@@ -6,6 +7,7 @@ class Themes extends StatefulWidget {
 }
 
 class _ThemesState extends State<Themes> {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,7 +17,6 @@ class _ThemesState extends State<Themes> {
             'THEMES',
             style: TextStyle(
               letterSpacing: 3,
-              color: Color(0xFFc6ff00),
               fontWeight: FontWeight.bold,
               fontSize: 22,
               fontFamily: 'Bungee',
@@ -69,12 +70,18 @@ class _ThemesState extends State<Themes> {
                   SizedBox(
                     height: 40,
                   ),
-                  Text(
-                    'Selected theme - DARK',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Selected theme - ',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      ChangeTheme(),
+                    ],
                   ),
                 ],
               ),

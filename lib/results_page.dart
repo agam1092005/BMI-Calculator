@@ -23,7 +23,6 @@ class ResultsPage extends StatelessWidget {
               'BMI CALCULATOR',
               style: TextStyle(
                 letterSpacing: 3,
-                color: Color(0xFFc6ff00),
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
                 fontFamily: 'Bungee',
@@ -39,7 +38,12 @@ class ResultsPage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Your Result',
-                    style: titleTextStyle,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                      fontFamily: 'Bungee',
+                    ),
                   ),
                 ),
               ),

@@ -36,6 +36,7 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
       child: Padding(
         padding: EdgeInsets.all(40),
         child: Container(
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: Image(
             image: AssetImage(
               'images/splash.png',

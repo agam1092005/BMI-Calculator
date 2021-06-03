@@ -53,6 +53,7 @@ class _InputPageState extends State<InputPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
           leading: IconButton(
             onPressed: () {
               Navigator.push(
@@ -72,7 +73,6 @@ class _InputPageState extends State<InputPage> {
               );
             },
             icon: Icon(Icons.settings),
-            color: Colors.white,
             splashRadius: 15,
             splashColor: Color(0xFF2b2b2b),
             iconSize: 30,
@@ -82,7 +82,6 @@ class _InputPageState extends State<InputPage> {
               'BMI CALCULATOR',
               style: TextStyle(
                 letterSpacing: 3,
-                color: Color(0xFFc6ff00),
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
                 fontFamily: 'Bungee',
@@ -135,7 +134,10 @@ class _InputPageState extends State<InputPage> {
                   children: <Widget>[
                     Text(
                       'HEIGHT',
-                      style: labelTextStyle,
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -158,9 +160,9 @@ class _InputPageState extends State<InputPage> {
                     ),
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
-                        inactiveTrackColor: Colors.black,
-                        activeTrackColor: Color(0xFFc6ff00),
-                        thumbColor: Color(0xFFc6ff00),
+                        inactiveTrackColor: Theme.of(context).scaffoldBackgroundColor,
+                        activeTrackColor: Theme.of(context).primaryColor,
+                        thumbColor:  Theme.of(context).primaryColor,
                         overlayColor: Color(0x60000000),
                         thumbShape:
                             RoundSliderThumbShape(enabledThumbRadius: 14.0),
@@ -194,7 +196,10 @@ class _InputPageState extends State<InputPage> {
                         children: <Widget>[
                           Text(
                             'WEIGHT',
-                            style: labelTextStyle,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).primaryColor),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -259,7 +264,10 @@ class _InputPageState extends State<InputPage> {
                         children: <Widget>[
                           Text(
                             'AGE',
-                            style: labelTextStyle,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).primaryColor),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -340,7 +348,7 @@ class _InputPageState extends State<InputPage> {
                                 Text(
                                   'ALERT',
                                   style: TextStyle(
-                                    color: Color(0xFFc6ff00),
+                                    color: Theme.of(context).primaryColor,
                                     fontSize: 35,
                                     letterSpacing: 2.0,
                                     fontWeight: FontWeight.bold,
@@ -354,7 +362,7 @@ class _InputPageState extends State<InputPage> {
                                   'You cannot proceed without selected gender, Kindly select your gender.',
                                   style: TextStyle(
                                     fontSize: 20.0,
-                                    color: Colors.white,
+                                    color: Colors.grey,
                                   ),
                                 ),
                               ],
@@ -369,7 +377,7 @@ class _InputPageState extends State<InputPage> {
                                 'Continue',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Color(0xFFc6ff00),
+                                  color: Theme.of(context).primaryColor,
                                 ),
                               ),
                             ),

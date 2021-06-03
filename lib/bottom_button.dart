@@ -16,10 +16,16 @@ class bottombutton extends StatelessWidget {
         child: Center(
           child: Text(
             buttonTitle,
-            style: largeTextStyle,
+            style: TextStyle(
+              letterSpacing: 12,
+              color: Theme.of(context).scaffoldBackgroundColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              fontFamily: 'Bungee',
+            ),
           ),
         ),
-        color: bottomContainerColor,
+        color: Theme.of(context).primaryColor,
         margin: EdgeInsets.only(top: 10.0),
         width: double.infinity,
         height: bottomContainerHeight,
