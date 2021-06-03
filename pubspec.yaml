@@ -41,6 +41,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+
+  assets:
+    - images/
+
+
   fonts:
     - family: Bungee
       fonts:

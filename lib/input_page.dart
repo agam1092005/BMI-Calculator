@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bmi_calculator/Settings_page.dart';
 import 'package:bmi_calculator/bottom_button.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/functionality.dart';
@@ -52,6 +53,30 @@ class _InputPageState extends State<InputPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  transitionsBuilder:
+                      (context, animation, animationTime, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                  pageBuilder: (context, animation, animationTime) {
+                    return Settings();
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.settings),
+            color: Colors.white,
+            splashRadius: 15,
+            splashColor: Color(0xFF2b2b2b),
+            iconSize: 30,
+          ),
           title: Center(
             child: Text(
               'BMI CALCULATOR',
@@ -198,7 +223,11 @@ class _InputPageState extends State<InputPage> {
                                 onPressed: () {
                                   setState(
                                     () {
-                                      weight--;
+                                      if (weight == 1) {
+                                        weight = 1;
+                                      } else {
+                                        weight--;
+                                      }
                                     },
                                   );
                                 },
@@ -259,7 +288,11 @@ class _InputPageState extends State<InputPage> {
                                 onPressed: () {
                                   setState(
                                     () {
-                                      age--;
+                                      if (age == 1) {
+                                        age = 1;
+                                      } else {
+                                        age--;
+                                      }
                                     },
                                   );
                                 },
@@ -301,7 +334,7 @@ class _InputPageState extends State<InputPage> {
                           elevation: 1,
                           buttonPadding: EdgeInsets.symmetric(horizontal: 20),
                           content: Container(
-                            height: MediaQuery.of(context).size.height *.2,
+                            height: MediaQuery.of(context).size.height * .2,
                             child: Column(
                               children: [
                                 Text(
