@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/about_us.dart';
 import 'package:bmi_calculator/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,23 @@ class Settings extends StatelessWidget {
               height: 10,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionsBuilder:
+                        (context, animation, animationTime, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                    pageBuilder: (context, animation, animationTime) {
+                      return AboutUs();
+                    },
+                  ),
+                );
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: Color(0xFF2b2b2b),

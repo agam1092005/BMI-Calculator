@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:bmi_calculator/SplashStartScreen.dart';
 import 'package:bmi_calculator/input_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _BMICalculatorState extends State<BMICalculator> with TickerProviderStateM
           ),
         ),
       ),
-      home: InputPage(),
+      home: SplashStartScreen(),
     );
   }
 }
