@@ -20,7 +20,7 @@ class ThemeProvider extends ChangeNotifier {
     iconTheme: IconThemeData(color: Colors.black),
   );
 
-  ThemeProvider({bool isDarkMode}) {
+  ThemeProvider({bool isDarkMode}){
     _selectedTheme = isDarkMode ? dark : light;
   }
 

@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   SystemChrome.setPreferredOrientations(
@@ -15,7 +15,7 @@ void main() async {
       ChangeNotifierProvider(
         child: BMICalculator(),
         create: (BuildContext context) => ThemeProvider(
-          isDarkMode: prefs.getBool('isDarkTheme'),
+          isDarkMode: (prefs.getBool('isDarkTheme') == null) ? false : prefs.getBool('isDarkTheme'),
         ),
       ),
     );

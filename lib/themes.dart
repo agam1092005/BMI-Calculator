@@ -172,21 +172,21 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
     if (Theme.of(context).scaffoldBackgroundColor == Color(0xFF000000)) {
       return CircleAvatar(
         radius: 100,
-        backgroundColor: Color(0xFF00123c),
+        backgroundColor: Color(0xFFFFFFFF),
         child: Icon(
           Icons.nights_stay_outlined,
-          size: 150,
-          color: Colors.grey,
+          size: 120,
+          color: Colors.black,
         ),
       );
     } else
       return CircleAvatar(
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color(0xFF000000),
         radius: 100,
         child: Icon(
           Icons.wb_sunny_outlined,
-          size: 150,
-          color: Colors.yellow,
+          size: 120,
+          color: Colors.white,
         ),
       );
   }
