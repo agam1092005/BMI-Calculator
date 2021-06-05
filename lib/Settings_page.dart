@@ -5,13 +5,27 @@ import 'package:flutter/material.dart';
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
+    SettingsImage() {
+      if(Theme.of(context).scaffoldBackgroundColor == Color(0xFF000000)) {
+        return 'settings_dark';
+      } else return 'settings_light';
+    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            color: Theme.of(context).scaffoldBackgroundColor,
+          ),
           title: Text(
             'SETTINGS',
             style: TextStyle(
               letterSpacing: 3,
+              color: Theme.of(context).scaffoldBackgroundColor,
               fontWeight: FontWeight.bold,
               fontSize: 22,
               fontFamily: 'Bungee',
@@ -27,7 +41,7 @@ class Settings extends StatelessWidget {
                 child: Image(
                   fit: BoxFit.fill,
                   image: AssetImage(
-                    'images/settings.png',
+                    'images/${SettingsImage()}.png',
                   ),
                 ),
               ),
@@ -55,7 +69,7 @@ class Settings extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).buttonColor,
+                  color: Theme.of(context).splashColor,
                   borderRadius: BorderRadius.all(
                     Radius.circular(15),
                   ),
@@ -95,7 +109,7 @@ class Settings extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).buttonColor,
+                  color: Theme.of(context).splashColor,
                   borderRadius: BorderRadius.all(
                     Radius.circular(15),
                   ),

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class ResultsPage extends StatelessWidget {
   ResultsPage(
       {@required this.bmiResult,
-        @required this.resultText,
-        @required this.interpretation});
+      @required this.resultText,
+      @required this.interpretation});
 
   final String bmiResult;
   final String resultText;
@@ -18,15 +18,23 @@ class ResultsPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Center(
-            child: Text(
-              'BMI CALCULATOR',
-              style: TextStyle(
-                letterSpacing: 3,
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-                fontFamily: 'Bungee',
-              ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            color: Theme.of(context).scaffoldBackgroundColor,
+          ),
+          elevation: 0,
+          backgroundColor: Theme.of(context).primaryColor,
+          title: Text(
+            'BMI CALCULATOR',
+            style: TextStyle(
+              letterSpacing: 3,
+              color: Theme.of(context).scaffoldBackgroundColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+              fontFamily: 'Bungee',
             ),
           ),
         ),
@@ -51,7 +59,7 @@ class ResultsPage extends StatelessWidget {
             Expanded(
               flex: 5,
               child: ReusableCard(
-                color: InactiveCardColor,
+                color: Theme.of(context).splashColor,
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,

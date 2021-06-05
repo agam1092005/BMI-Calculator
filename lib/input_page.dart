@@ -24,68 +24,73 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
-  int age = 20;
+  int age = 18;
 
-  Color maleCardColor = InactiveCardColor;
-  Color femaleCardColor = InactiveCardColor;
+  Color maleCardColor = Colors.grey;
+  Color femaleCardColor = Colors.grey;
 
   void updateColor(Gender selectedgender) {
     if (selectedgender == Gender.male) {
-      if (maleCardColor == InactiveCardColor) {
-        maleCardColor = ActiveCardColor;
-        femaleCardColor = InactiveCardColor;
+      if (maleCardColor == Theme.of(context).splashColor) {
+        maleCardColor = Theme.of(context).buttonColor;
+        femaleCardColor = Theme.of(context).splashColor;
       } else {
-        maleCardColor = InactiveCardColor;
+        maleCardColor = Theme.of(context).splashColor;
       }
     }
     if (selectedgender == Gender.female) {
-      if (femaleCardColor == InactiveCardColor) {
-        femaleCardColor = ActiveCardColor;
-        maleCardColor = InactiveCardColor;
+      if (femaleCardColor == Theme.of(context).splashColor) {
+        femaleCardColor = Theme.of(context).buttonColor;
+        maleCardColor = Theme.of(context).splashColor;
       } else {
-        femaleCardColor = InactiveCardColor;
+        femaleCardColor = Theme.of(context).splashColor;
       }
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                PageRouteBuilder(
-                  transitionsBuilder:
-                      (context, animation, animationTime, child) {
-                    return FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    );
-                  },
-                  pageBuilder: (context, animation, animationTime) {
-                    return Settings();
-                  },
-                ),
-              );
-            },
-            icon: Icon(Icons.settings),
-            splashRadius: 15,
-            splashColor: Color(0xFF2b2b2b),
-            iconSize: 30,
-          ),
-          title: Center(
-            child: Text(
-              'BMI CALCULATOR',
-              style: TextStyle(
-                letterSpacing: 3,
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-                fontFamily: 'Bungee',
-              ),
+          elevation: 0,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionsBuilder:
+                        (context, animation, animationTime, child) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                    pageBuilder: (context, animation, animationTime) {
+                      return Settings();
+                    },
+                  ),
+                );
+              },
+              icon: Icon(Icons.settings),
+              splashRadius: 15,
+              color: Theme.of(context).primaryColor,
+              splashColor: Theme.of(context).splashColor,
+              iconSize: 30,
+            ),
+          ],
+          title: Text(
+            'BMI CALCULATOR',
+            style: TextStyle(
+              letterSpacing: 3,
+              color: Theme.of(context).primaryColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+              fontFamily: 'Bungee',
             ),
           ),
         ),
@@ -128,7 +133,7 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: ReusableCard(
-                color: InactiveCardColor,
+                color: Theme.of(context).splashColor,
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -160,12 +165,13 @@ class _InputPageState extends State<InputPage> {
                     ),
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
-                        inactiveTrackColor: Theme.of(context).scaffoldBackgroundColor,
+                        inactiveTrackColor:
+                            Theme.of(context).scaffoldBackgroundColor,
                         activeTrackColor: Theme.of(context).primaryColor,
-                        thumbColor:  Theme.of(context).primaryColor,
+                        thumbColor: Theme.of(context).primaryColor,
                         overlayColor: Color(0x60000000),
                         thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 14.0),
+                            RoundSliderThumbShape(enabledThumbRadius: 12.0),
                         overlayShape:
                             RoundSliderOverlayShape(overlayRadius: 32.0),
                       ),
@@ -254,7 +260,7 @@ class _InputPageState extends State<InputPage> {
                           ),
                         ],
                       ),
-                      color: InactiveCardColor,
+                      color: Theme.of(context).splashColor,
                     ),
                   ),
                   Expanded(
@@ -322,7 +328,7 @@ class _InputPageState extends State<InputPage> {
                           ),
                         ],
                       ),
-                      color: InactiveCardColor,
+                      color: Theme.of(context).splashColor,
                     ),
                   ),
                 ],
@@ -333,12 +339,13 @@ class _InputPageState extends State<InputPage> {
               onTap: () {
                 setState(
                   () {
-                    if (maleCardColor == InactiveCardColor &&
-                        femaleCardColor == InactiveCardColor) {
+                    if (maleCardColor == Theme.of(context).splashColor &&
+                        femaleCardColor == Theme.of(context).splashColor) {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          backgroundColor: Color(0xFF2b2b2b),
+                          backgroundColor:
+                              Theme.of(context).scaffoldBackgroundColor,
                           elevation: 1,
                           buttonPadding: EdgeInsets.symmetric(horizontal: 20),
                           content: Container(
@@ -369,7 +376,14 @@ class _InputPageState extends State<InputPage> {
                             ),
                           ),
                           actions: [
-                            TextButton(
+                            OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                shape: StadiumBorder(),
+                                side: BorderSide(
+                                  width: 2,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
@@ -381,6 +395,19 @@ class _InputPageState extends State<InputPage> {
                                 ),
                               ),
                             ),
+
+                            // TextButton(
+                            //   onPressed: () {
+                            //     Navigator.pop(context);
+                            //   },
+                            //   child: Text(
+                            //     'Continue',
+                            //     style: TextStyle(
+                            //       fontSize: 15,
+                            //       color: Theme.of(context).primaryColor,
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),

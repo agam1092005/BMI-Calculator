@@ -1,15 +1,24 @@
 import 'package:bmi_calculator/SplashStartScreen.dart';
-import 'package:bmi_calculator/theme_provider.dart';
+import 'package:bmi_calculator/ThemeProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
-    runApp(BMICalculator());
+    return runApp(
+      ChangeNotifierProvider(
+        child: BMICalculator(),
+        create: (BuildContext context) => ThemeProvider(
+          isDarkMode: prefs.getBool('isDarkTheme'),
+        ),
+      ),
+    );
   });
 }
 
@@ -32,25 +41,15 @@ class _BMICalculatorState extends State<BMICalculator>
   }
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
-      builder: (context, _) {
-        final themeProvider = Provider.of<ThemeProvider>(context);
+  Widget build(BuildContext context) {
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          themeMode: themeProvider.themeMode,
-          theme: MyThemes.lightTheme,
-          darkTheme: MyThemes.darkTheme,
-          // theme: ThemeData(
-          //   primaryColor: Color(0xFF000000),
-          //   scaffoldBackgroundColor: Color(0xFF000000),
-          //   textTheme: TextTheme(
-          //     bodyText1: TextStyle(
-          //       color: Color(0xFFc6ff00),
-          //     ),
-          //   ),
-          // ),
+          theme: themeProvider.getTheme,
           home: SplashStartScreen(),
         );
-      });
+      },
+    );
+  }
 }

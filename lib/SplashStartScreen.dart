@@ -30,16 +30,19 @@ class _SplashStartScreenState extends State<SplashStartScreen> {
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.all(40),
-        child: Container(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          child: Image(
-            image: AssetImage(
-              'images/splash.png',
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Padding(
+          padding: const EdgeInsets.all(40),
+          child: Center(
+            child: Image(
+              image: AssetImage(
+                'images/splash.png',
+              ),
             ),
           ),
         ),

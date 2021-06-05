@@ -6,9 +6,17 @@ class AboutUs extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            color: Theme.of(context).scaffoldBackgroundColor,
+          ),
           title: Text(
             'About Us',
             style: TextStyle(
+              color: Theme.of(context).scaffoldBackgroundColor,
               letterSpacing: 3,
               fontWeight: FontWeight.bold,
               fontSize: 22,
@@ -89,6 +97,13 @@ class AboutUs extends StatelessWidget {
               Flexible(
                 child: SizedBox(
                   height: 10000,
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Text(
+                  'Build 1.0',
+                  style: TextStyle(color: Color(0xFF2b2b2b), fontSize: 12),
                 ),
               ),
               Align(
