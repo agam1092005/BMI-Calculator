@@ -100,11 +100,4 @@ We may update this privacy notice from time to time. The updated version will be
 
 9. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
 
-If you have questions or comments about this notice, you may email us at __________ or by post to:
-
-TechUtility
-2313, Telehos Society, Sector 50 C
-Near PCA Stadium
-CHANDIGARH, Chandigarh 160047
-India
-
+If you have questions or comments about this notice, you may email us at TechUtilityService@gmail.com .
