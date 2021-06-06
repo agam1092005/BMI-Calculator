@@ -16,10 +16,10 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Customize your way...',
+            'Choose your Style...',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
+                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
           ),
           SizedBox(
             height: 5,
@@ -28,7 +28,7 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             'Pop or Subtle',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
+                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
           ),
           SizedBox(
             height: 5,
@@ -37,16 +37,16 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             'Day or Night',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
+                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
           ),
           SizedBox(
-            height: 5,
+            height: 10,
           ),
           Text(
             'Selected theme - Dark',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w900),
           ),
         ],
       );
@@ -55,10 +55,10 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Customize your way...',
+            'Choose your Style...',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
+                color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
           ),
           SizedBox(
             height: 5,
@@ -67,7 +67,7 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             'Pop or Subtle',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
+                color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
           ),
           SizedBox(
             height: 5,
@@ -76,16 +76,16 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             'Day or Night',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
+                color: Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
           ),
           SizedBox(
-            height: 5,
+            height: 10,
           ),
           Text(
             'Selected theme - Light',
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500),
+                color: Colors.black, fontSize: 18, fontWeight: FontWeight.w900),
           ),
         ],
       );
@@ -108,13 +108,7 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             context,
             listen: false,
           );
-           themeProvider.swapTheme();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Theme changed to ${ShowSnackbar()}'),
-              duration: Duration(milliseconds: 500),
-            ),
-          );
+          themeProvider.swapTheme();
         },
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 100),
@@ -140,13 +134,7 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             context,
             listen: false,
           );
-            themeProvider.swapTheme();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Theme changed to ${ShowSnackbar()}'),
-              duration: Duration(milliseconds: 500),
-            ),
-          );
+          themeProvider.swapTheme();
         },
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 100),
@@ -170,24 +158,16 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
   // ignore: non_constant_identifier_names
   ThemeImage() {
     if (Theme.of(context).scaffoldBackgroundColor == Color(0xFF000000)) {
-      return CircleAvatar(
-        radius: 100,
-        backgroundColor: Color(0xFFFFFFFF),
-        child: Icon(
-          Icons.nights_stay_outlined,
-          size: 120,
-          color: Colors.black,
-        ),
+      return Icon(
+        Icons.nights_stay_outlined,
+        size: 140,
+        color: Colors.white,
       );
     } else
-      return CircleAvatar(
-        backgroundColor: Color(0xFF000000),
-        radius: 100,
-        child: Icon(
-          Icons.wb_sunny_outlined,
-          size: 120,
-          color: Colors.white,
-        ),
+      return Icon(
+        Icons.wb_sunny_outlined,
+        size: 140,
+        color: Colors.black,
       );
   }
 
@@ -200,8 +180,7 @@ class _ThemesState extends State<Themes> with TickerProviderStateMixin {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
-              setState(() {
-              });
+              setState(() {});
             },
             color: Theme.of(context).scaffoldBackgroundColor,
           ),

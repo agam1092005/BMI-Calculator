@@ -26,29 +26,213 @@ class _InputPageState extends State<InputPage> {
   int weight = 60;
   int age = 18;
 
-  Color maleCardColor = Colors.grey;
-  Color femaleCardColor = Colors.grey;
+  Color maleCardColorDark = InactiveCardColorDark;
+  Color femaleCardColorDark = InactiveCardColorDark;
 
-  void updateColor(Gender selectedgender) {
+  void updateColorDark(Gender selectedgender) {
     if (selectedgender == Gender.male) {
-      if (maleCardColor == Theme.of(context).splashColor) {
-        maleCardColor = Theme.of(context).buttonColor;
-        femaleCardColor = Theme.of(context).splashColor;
+      if (maleCardColorDark == InactiveCardColorDark) {
+        maleCardColorDark = ActiveCardColorDark;
+        femaleCardColorDark = InactiveCardColorDark;
       } else {
-        maleCardColor = Theme.of(context).splashColor;
+        maleCardColorDark = InactiveCardColorDark;
       }
     }
     if (selectedgender == Gender.female) {
-      if (femaleCardColor == Theme.of(context).splashColor) {
-        femaleCardColor = Theme.of(context).buttonColor;
-        maleCardColor = Theme.of(context).splashColor;
+      if (femaleCardColorDark == InactiveCardColorDark) {
+        femaleCardColorDark = ActiveCardColorDark;
+        maleCardColorDark = InactiveCardColorDark;
       } else {
-        femaleCardColor = Theme.of(context).splashColor;
+        femaleCardColorDark = InactiveCardColorDark;
       }
     }
   }
 
+  Color maleCardColorLight = InactiveCardColorLight;
+  Color femaleCardColorLight = InactiveCardColorLight;
 
+  void updateColorLight(Gender selectedgender) {
+    if (selectedgender == Gender.male) {
+      if (maleCardColorLight == InactiveCardColorLight) {
+        maleCardColorLight = ActiveCardColorLight;
+        femaleCardColorLight = InactiveCardColorLight;
+      } else {
+        maleCardColorLight = InactiveCardColorLight;
+      }
+    }
+    if (selectedgender == Gender.female) {
+      if (femaleCardColorLight == InactiveCardColorLight) {
+        femaleCardColorLight = ActiveCardColorLight;
+        maleCardColorLight = InactiveCardColorLight;
+      } else {
+        femaleCardColorLight = InactiveCardColorLight;
+      }
+    }
+  }
+
+  funtion() {
+    if (Theme.of(context).scaffoldBackgroundColor == Color(0xFF000000)) {
+      if (maleCardColorDark == InactiveCardColorDark &&
+          femaleCardColorDark == InactiveCardColorDark) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            elevation: 1,
+            buttonPadding: EdgeInsets.symmetric(horizontal: 20),
+            content: Container(
+              height: MediaQuery.of(context).size.height * .2,
+              child: Column(
+                children: [
+                  Text(
+                    'ALERT',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 35,
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Bungee',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'You cannot proceed without selected gender, Kindly select your gender.',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  shape: StadiumBorder(),
+                  side: BorderSide(
+                    width: 2,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Continue',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ],
+            contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          ),
+        );
+      } else {
+        Functionality calc = Functionality(height: height, weight: weight);
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+            transitionsBuilder: (context, animation, animationTime, child) {
+              return FadeTransition(
+                opacity: animation,
+                child: child,
+              );
+            },
+            pageBuilder: (context, animation, animationTime) {
+              return ResultsPage(
+                bmiResult: calc.calculateBMI(),
+                resultText: calc.getResult(),
+                interpretation: calc.getInterpretation(),
+              );
+            },
+          ),
+        );
+      }
+    } else if (maleCardColorLight == InactiveCardColorLight &&
+        femaleCardColorLight == InactiveCardColorLight) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          elevation: 1,
+          buttonPadding: EdgeInsets.symmetric(horizontal: 20),
+          content: Container(
+            height: MediaQuery.of(context).size.height * .2,
+            child: Column(
+              children: [
+                Text(
+                  'ALERT',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 35,
+                    letterSpacing: 2.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Bungee',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'You cannot proceed without selected gender, Kindly select your gender.',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                shape: StadiumBorder(),
+                side: BorderSide(
+                  width: 2,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Continue',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            ),
+          ],
+          contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        ),
+      );
+    } else {
+      Functionality calc = Functionality(height: height, weight: weight);
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          transitionsBuilder: (context, animation, animationTime, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          pageBuilder: (context, animation, animationTime) {
+            return ResultsPage(
+              bmiResult: calc.calculateBMI(),
+              resultText: calc.getResult(),
+              interpretation: calc.getInterpretation(),
+            );
+          },
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +288,16 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       onPress: () {
                         setState(() {
-                          updateColor(Gender.male);
+                          Theme.of(context).scaffoldBackgroundColor ==
+                                  Color(0xFF000000)
+                              ? updateColorDark(Gender.male)
+                              : updateColorLight(Gender.male);
                         });
                       },
-                      color: maleCardColor,
+                      color: (Theme.of(context).scaffoldBackgroundColor ==
+                              Color(0xFF000000)
+                          ? maleCardColorDark
+                          : maleCardColorLight),
                       cardChild: ReusableIcon(
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',
@@ -118,10 +308,16 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       onPress: () {
                         setState(() {
-                          updateColor(Gender.female);
+                          Theme.of(context).scaffoldBackgroundColor ==
+                                  Color(0xFF000000)
+                              ? updateColorDark(Gender.female)
+                              : updateColorLight(Gender.female);
                         });
                       },
-                      color: femaleCardColor,
+                      color: (Theme.of(context).scaffoldBackgroundColor ==
+                              Color(0xFF000000)
+                          ? femaleCardColorDark
+                          : femaleCardColorLight),
                       cardChild: ReusableIcon(
                         icon: FontAwesomeIcons.venus,
                         label: 'FEMALE',
@@ -339,103 +535,7 @@ class _InputPageState extends State<InputPage> {
               onTap: () {
                 setState(
                   () {
-                    if (maleCardColor == Theme.of(context).splashColor &&
-                        femaleCardColor == Theme.of(context).splashColor) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          backgroundColor:
-                              Theme.of(context).scaffoldBackgroundColor,
-                          elevation: 1,
-                          buttonPadding: EdgeInsets.symmetric(horizontal: 20),
-                          content: Container(
-                            height: MediaQuery.of(context).size.height * .2,
-                            child: Column(
-                              children: [
-                                Text(
-                                  'ALERT',
-                                  style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontSize: 35,
-                                    letterSpacing: 2.0,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Bungee',
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'You cannot proceed without selected gender, Kindly select your gender.',
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          actions: [
-                            OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                shape: StadiumBorder(),
-                                side: BorderSide(
-                                  width: 2,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                'Continue',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                            ),
-
-                            // TextButton(
-                            //   onPressed: () {
-                            //     Navigator.pop(context);
-                            //   },
-                            //   child: Text(
-                            //     'Continue',
-                            //     style: TextStyle(
-                            //       fontSize: 15,
-                            //       color: Theme.of(context).primaryColor,
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                        ),
-                      );
-                    } else {
-                      Functionality calc =
-                          Functionality(height: height, weight: weight);
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          transitionsBuilder:
-                              (context, animation, animationTime, child) {
-                            return FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            );
-                          },
-                          pageBuilder: (context, animation, animationTime) {
-                            return ResultsPage(
-                              bmiResult: calc.calculateBMI(),
-                              resultText: calc.getResult(),
-                              interpretation: calc.getInterpretation(),
-                            );
-                          },
-                        ),
-                      );
-                    }
+                    funtion();
                   },
                 );
               },

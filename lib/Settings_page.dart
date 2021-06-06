@@ -75,6 +75,7 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 child: ListTile(
+                  leading: Icon(Icons.brightness_6_outlined, size: 30, color: Colors.white,),
                   title: Text(
                     'Theme',
                     style: TextStyle(color: Colors.white, fontSize: 25),
@@ -115,6 +116,7 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 child: ListTile(
+                  leading: Icon(Icons.engineering, size: 30, color: Colors.white,),
                   title: Text(
                     'About Us',
                     style: TextStyle(color: Colors.white, fontSize: 25),
