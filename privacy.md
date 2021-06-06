@@ -27,7 +27,7 @@ TABLE OF CONTENTS
 
 
 
-1. WHAT INFORMATION DO WE COLLECT?
+01. WHAT INFORMATION DO WE COLLECT?
 
 Personal information you disclose to us
 
